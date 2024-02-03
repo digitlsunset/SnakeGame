@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://b35rstuvgy52o"]
+
+[ext_resource type="Script" path="res://Scripts/Snake.gd" id="1_cxjhm"]
+[ext_resource type="Texture2D" uid="uid://dp2d26jwt1la4" path="res://Resources/bug.png" id="2_n1a7n"]
+[ext_resource type="Texture2D" uid="uid://5gxhvg6xmt3t" path="res://Resources/head.png" id="3_afrbt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4jn0c"]
+font_size = 30
+
+[node name="Snake" type="Node2D"]
+script = ExtResource("1_cxjhm")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Bug" type="Sprite2D" parent="."]
+position = Vector2(-26, -26)
+texture = ExtResource("2_n1a7n")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(-77, -26)
+texture = ExtResource("3_afrbt")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Fail" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 511.0
+offset_bottom = 511.0
+
+[node name="ScoreLabel" type="Label" parent="Fail"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.65
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.00900269
+offset_top = -0.0130005
+offset_right = -0.150024
+offset_bottom = 0.0849915
+text = "Your score: "
+label_settings = SubResource("LabelSettings_4jn0c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MMButton" type="Button" parent="Fail"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.8
+anchor_right = 0.675
+anchor_bottom = 0.875
+offset_left = -4.86002
+offset_top = 1.79398
+offset_right = 0.0799866
+offset_bottom = 0.00698853
+text = "Return to Main Menu"
+
+[connection signal="timeout" from="MoveTimer" to="." method="Move"]
+[connection signal="pressed" from="Fail/MMButton" to="." method="MainMenuPressed"]

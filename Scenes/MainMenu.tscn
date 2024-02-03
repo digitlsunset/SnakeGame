@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bptr77modfclm"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_dsal8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ynri"]
+font_size = 50
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dsal8")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.05
+anchor_right = 0.7
+anchor_bottom = 0.4
+text = "SNAKE
+GAME"
+label_settings = SubResource("LabelSettings_2ynri")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.45
+anchor_right = 0.6
+anchor_bottom = 0.55
+offset_left = -1.52588e-05
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.6
+anchor_right = 0.6
+anchor_bottom = 0.7
+offset_left = -1.52588e-05
+offset_top = -3.05176e-05
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[connection signal="pressed" from="Play" to="." method="PlayPressed"]
+[connection signal="pressed" from="Exit" to="." method="ExitPressed"]
